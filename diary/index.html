@@ -50,7 +50,7 @@
         document.getElementById('wrong').classList.remove('hidden');
       }
     }
-    if (sessionStorage.getItem('diary_unlocked')) unlock();
+    if (sessionStorage.getItem('diary_unlocked') === '1') { document.getElementById('lock').classList.add('hidden'); document.getElementById('diary').classList.remove('hidden'); document.getElementById('diary').innerHTML = ENTRIES.map(e => '<div class="date">'+e.date+' '+e.title+'</div><div class="entry">'+e.text+'</div>').join(''); }
   </script>
 </body>
 </html>
