@@ -2,7 +2,7 @@
 layout: post
 title: "修复 AI 工具调用：归一化存储、原子写入与防御性序列化"
 date: 2026-06-23
-categories: architecture ai
+permalink: /2026/06/23/fixing-ai-tool-calling
 lang: zh-CN
 ---
 
