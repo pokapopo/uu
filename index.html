@@ -3,18 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>uu的个人网站</title>
+  <title>uu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body { max-width: 640px; margin: 80px auto; padding: 0 20px; font-family: Georgia, "STKaiti", serif; background: #faf6ee; color: #3a3a3a; line-height: 1.8; }
-    h1 { color: #8b4a3a; font-size: 1.8em; }
-    a { color: #8b4a3a; }
+    :root {
+      --bg: #faf7f9;
+      --surface: rgba(255,255,255,0.72);
+      --text: #1f1233;
+      --text-secondary: #51445a;
+      --muted: #9b8e9b;
+      --accent: #f05b93;
+      --accent-glow: #ff7eb3;
+      --accent-light: #fbb6ce;
+      --accent-ice: #fef0f4;
+      --border: rgba(240,91,147,0.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      max-width: 720px; margin: 0 auto; padding: 80px 24px;
+      font-family: "Inter", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+      font-size: 16px; line-height: 1.78; color: var(--text); background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(ellipse at 30% 0%, rgba(255,126,179,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 100%, rgba(255,180,200,0.06) 0%, transparent 50%);
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    }
+
+    /* Glowing orb decorations */
+    body::before {
+      content: ''; position: fixed; top: 15%; left: 10%; width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,126,179,0.1) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none; z-index: -1;
+    }
+    body::after {
+      content: ''; position: fixed; bottom: 10%; right: 8%; width: 250px; height: 250px;
+      background: radial-gradient(circle, rgba(255,180,200,0.08) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none; z-index: -1;
+    }
+
+    h1 {
+      font-size: 3.2em; font-weight: 800; letter-spacing: -0.8px; line-height: 1.1; margin-bottom: 6px;
+      background: linear-gradient(135deg, #1f1233 0%, #c0396b 50%, #3d2247 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      filter: drop-shadow(0 2px 4px rgba(240,91,147,0.1));
+    }
+    .subtitle { color: var(--muted); font-size: 1.05em; font-weight: 500; margin-bottom: 40px; }
+
+    /* Navigation cards */
+    nav { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
+    nav a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 22px; border-radius: 18px;
+      background: var(--surface); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      text-decoration: none; font-weight: 600; font-size: 0.95em;
+      color: var(--text); letter-spacing: 0.2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 12px rgba(240,91,147,0.04);
+    }
+    nav a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(240,91,147,0.12);
+      border-color: rgba(240,91,147,0.25);
+    }
+    nav a .icon { font-size: 1.3em; line-height: 1; }
+    nav a small { font-weight: 400; color: var(--muted); font-size: 0.82em; }
+
+    footer { margin-top: 64px; font-size: 0.82em; color: var(--muted); font-weight: 500; display: flex; gap: 18px; }
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      body { padding: 56px 16px; }
+      h1 { font-size: 2.4em; }
+      nav a { padding: 12px 18px; }
+    }
   </style>
 </head>
 <body>
   <h1>uu</h1>
-  <p>我特么来了</p>
-  <p><a href="blog/">📝 文章</a></p>
-  <p><a href="diary/">📒 日记</a></p>
-  <p><a href="https://github.com/pokapopo">GitHub</a></p>
+  <p class="subtitle">整理思路，记录成长，留下痕迹。</p>
+  <nav>
+    <a href="blog/"><span class="icon">📝</span> 文章 <small>技术笔记</small></a>
+    <a href="diary/"><span class="icon">📒</span> 日记 <small>日常记录</small></a>
+    <a href="https://github.com/pokapopo"><span class="icon">🐙</span> GitHub</a>
+  </nav>
+  <footer>© 2026 <a href="https://github.com/pokapopo">uu</a></footer>
 </body>
 </html>

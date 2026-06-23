@@ -4,31 +4,150 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} · uu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body { max-width: 680px; margin: 80px auto; padding: 0 20px; font-family: Georgia, "STKaiti", "Noto Serif SC", serif; background: #faf6ee; color: #3a3a3a; line-height: 1.85; }
-    h1 { color: #8b4a3a; font-size: 1.6em; margin-bottom: 0.2em; }
-    h2 { color: #8b4a3a; font-size: 1.2em; margin-top: 2em; }
-    h3 { color: #5a3a2a; font-size: 1.05em; margin-top: 1.5em; }
-    .meta { color: #999; font-size: 0.9em; margin-bottom: 2em; }
-    a { color: #8b4a3a; }
-    pre { background: #f0e8db; padding: 16px; border-radius: 6px; overflow-x: auto; font-size: 0.88em; line-height: 1.5; }
-    code { font-family: "Fira Code", "SF Mono", Consolas, monospace; font-size: 0.85em; background: #f0e8db; padding: 2px 5px; border-radius: 3px; }
-    pre code { padding: 0; background: none; }
-    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
-    th, td { border: 1px solid #d4c5b5; padding: 8px 12px; text-align: left; font-size: 0.9em; }
-    th { background: #f0e8db; }
-    blockquote { border-left: 3px solid #d4a0a0; margin: 1em 0; padding: 4px 16px; color: #6a5a4a; background: #f7f0e4; }
-    hr { border: none; border-top: 1px solid #e0d5c5; margin: 2em 0; }
-    .back { margin-top: 3em; padding-top: 1em; border-top: 1px solid #e0d5c5; font-size: 0.9em; }
-    @media (max-width: 600px) { body { margin: 40px auto; } h1 { font-size: 1.3em; } }
+    :root {
+      --bg: #faf7f9;
+      --surface: rgba(255,255,255,0.72);
+      --text: #1f1233;
+      --text-secondary: #51445a;
+      --muted: #9b8e9b;
+      --accent: #f05b93;
+      --accent-glow: #ff7eb3;
+      --accent-light: #fbb6ce;
+      --accent-ice: #fef0f4;
+      --border: rgba(240,91,147,0.12);
+      --code-bg: rgba(254,240,244,0.6);
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      max-width: 720px; margin: 0 auto; padding: 48px 24px 80px;
+      font-family: "Inter", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+      font-size: 16px; line-height: 1.78; color: var(--text); background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(ellipse at 20% 0%, rgba(255,126,179,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(255,180,200,0.05) 0%, transparent 50%);
+    }
+
+    /* ---- Header: frosted glass pill ---- */
+    header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 52px;
+      background: var(--surface); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 10px 20px; width: fit-content;
+      box-shadow: 0 2px 16px rgba(240,91,147,0.06);
+    }
+    header a {
+      font-size: 14px; font-weight: 600; color: var(--text-secondary); text-decoration: none;
+      letter-spacing: 0.4px; transition: color 0.2s;
+    }
+    header a:hover { color: var(--accent); }
+    header .sep { color: #d4c4d4; font-weight: 300; }
+
+    /* ---- Title ---- */
+    h1 {
+      font-size: 2em; font-weight: 800; color: var(--text); line-height: 1.25;
+      letter-spacing: -0.6px; margin-bottom: 8px;
+      background: linear-gradient(135deg, #1f1233 0%, #3d2247 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .date {
+      color: var(--muted); font-size: 0.85em; margin-bottom: 44px;
+      font-weight: 500; letter-spacing: 0.2px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .date::before {
+      content: ''; display: inline-block; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 8px rgba(240,91,147,0.4);
+    }
+
+    /* ---- Body ---- */
+    h2 {
+      font-size: 1.25em; font-weight: 700; color: var(--text);
+      margin: 52px 0 14px; letter-spacing: -0.3px;
+      padding-bottom: 8px; border-bottom: 2px solid var(--accent-ice);
+    }
+    h3 { font-size: 1.08em; font-weight: 650; color: var(--text); margin: 36px 0 10px; letter-spacing: -0.2px; }
+    p { margin-bottom: 1.1em; color: var(--text-secondary); }
+    a {
+      color: var(--accent); text-decoration: none; font-weight: 550;
+      background: linear-gradient(var(--accent),var(--accent)) 0 100% / 0 1.5px no-repeat;
+      transition: background-size 0.25s ease;
+    }
+    a:hover { background-size: 100% 1.5px; }
+    strong { color: var(--text); font-weight: 650; }
+
+    /* ---- Code ---- */
+    code {
+      font-family: "JetBrains Mono", "Fira Code", "SF Mono", Consolas, monospace;
+      font-size: 0.82em; background: var(--code-bg); padding: 2.5px 7px;
+      border-radius: var(--radius-sm); color: #c0396b; font-weight: 500;
+    }
+    pre {
+      background: var(--surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      padding: 22px 24px; border-radius: var(--radius);
+      overflow-x: auto; margin: 1.3em 0; line-height: 1.6;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 24px rgba(240,91,147,0.05), inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+    pre code { padding: 0; background: none; font-size: 0.78em; line-height: inherit; color: var(--text); font-weight: 400; }
+
+    /* ---- Table ---- */
+    table { border-collapse: collapse; width: 100%; margin: 1.2em 0; font-size: 0.88em; }
+    th, td { border: 1px solid var(--border); padding: 10px 15px; text-align: left; }
+    th { background: var(--accent-ice); font-weight: 650; color: #3d2247; letter-spacing: 0.3px; }
+    td { color: var(--text-secondary); }
+
+    /* ---- Blockquote ---- */
+    blockquote {
+      border-left: 3px solid var(--accent-light); margin: 1.3em 0;
+      padding: 10px 20px; color: var(--text-secondary);
+      background: var(--accent-ice); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    /* ---- Lists ---- */
+    ul, ol { margin: 0.6em 0 1em 1.5em; color: var(--text-secondary); }
+    li { margin-bottom: 0.35em; }
+    li::marker { color: var(--accent-light); }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    img { max-width: 100%; border-radius: var(--radius); }
+
+    /* ---- Footer ---- */
+    footer {
+      margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.84em; color: var(--muted); font-weight: 500;
+      display: flex; gap: 20px; flex-wrap: wrap;
+    }
+    footer a { color: var(--muted); font-weight: 500; }
+    footer a:hover { color: var(--accent); background-size: 100% 1.5px; }
+
+    @media (max-width: 600px) {
+      body { padding: 28px 16px 60px; font-size: 15px; }
+      h1 { font-size: 1.5em; }
+      pre { padding: 14px 16px; margin: 0.8em 0; }
+      header { padding: 8px 16px; }
+    }
   </style>
 </head>
 <body>
-  <h1>{{ page.title }}</h1>
-  <div class="meta">{{ page.date | date: "%Y-%m-%d" }}</div>
-  {{ content }}
-  <div class="back">
-    <a href="{{ site.baseurl }}/blog">← 返回文章列表</a> · <a href="{{ site.baseurl }}/">首页</a>
-  </div>
+  <header>
+    <a href="{{ site.baseurl }}/">uu</a><span class="sep">/</span><a href="{{ site.baseurl }}/blog">文章</a>
+  </header>
+  <article>
+    <h1>{{ page.title }}</h1>
+    <div class="date">{{ page.date | date: "%Y · %m · %d" }}</div>
+    {{ content }}
+  </article>
+  <footer>© {{ page.date | date: "%Y" }} uu · <a href="{{ site.baseurl }}/">home</a> · <a href="{{ site.baseurl }}/blog">posts</a></footer>
 </body>
 </html>

@@ -4,17 +4,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} · uu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body { max-width: 680px; margin: 80px auto; padding: 0 20px; font-family: Georgia, "STKaiti", "Noto Serif SC", serif; background: #faf6ee; color: #3a3a3a; line-height: 1.85; }
-    h1 { color: #8b4a3a; font-size: 1.6em; }
-    a { color: #8b4a3a; }
-    .back { margin-top: 3em; padding-top: 1em; border-top: 1px solid #e0d5c5; font-size: 0.9em; }
-    @media (max-width: 600px) { body { margin: 40px auto; } h1 { font-size: 1.3em; } }
+    :root {
+      --bg: #faf7f9;
+      --surface: rgba(255,255,255,0.72);
+      --text: #1f1233;
+      --text-secondary: #51445a;
+      --muted: #9b8e9b;
+      --accent: #f05b93;
+      --accent-light: #fbb6ce;
+      --accent-ice: #fef0f4;
+      --border: rgba(240,91,147,0.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      max-width: 720px; margin: 0 auto; padding: 48px 24px 80px;
+      font-family: "Inter", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+      font-size: 16px; line-height: 1.78; color: var(--text); background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(ellipse at 20% 0%, rgba(255,126,179,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(255,180,200,0.05) 0%, transparent 50%);
+    }
+    header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 48px;
+      background: var(--surface); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 10px 20px; width: fit-content;
+      box-shadow: 0 2px 16px rgba(240,91,147,0.06);
+    }
+    header a { font-size: 14px; font-weight: 600; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.4px; transition: color 0.2s; }
+    header a:hover { color: var(--accent); }
+    header .sep { color: #d4c4d4; font-weight: 300; }
+    h1 { font-size: 2em; font-weight: 800; margin-bottom: 32px; letter-spacing: -0.6px; background: linear-gradient(135deg, #1f1233 0%, #3d2247 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    a { color: var(--accent); text-decoration: none; font-weight: 550; background: linear-gradient(var(--accent),var(--accent)) 0 100% / 0 1.5px no-repeat; transition: background-size 0.25s ease; }
+    a:hover { background-size: 100% 1.5px; }
+    ul { list-style: none; padding: 0; }
+    li {
+      margin-bottom: 6px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px;
+      padding: 12px 16px; border-radius: 12px; transition: background 0.2s;
+    }
+    li:hover { background: var(--accent-ice); }
+    li time {
+      font-family: "JetBrains Mono", "SF Mono", Consolas, monospace;
+      font-size: 0.78em; color: var(--muted); min-width: 82px; font-weight: 500;
+    }
+    li a { font-size: 1.02em; }
+    footer { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--border); font-size: 0.84em; color: var(--muted); font-weight: 500; }
+    footer a { color: var(--muted); font-weight: 500; }
+    footer a:hover { color: var(--accent); background-size: 100% 1.5px; }
+    @media (max-width: 600px) {
+      body { padding: 28px 16px 60px; font-size: 15px; }
+      h1 { font-size: 1.5em; }
+      li { flex-direction: column; gap: 2px; padding: 10px 0; }
+    }
   </style>
 </head>
 <body>
+  <header>
+    <a href="{{ site.baseurl }}/">uu</a><span class="sep">/</span><a href="{{ site.baseurl }}/blog">文章</a>
+  </header>
   <h1>{{ page.title }}</h1>
   {{ content }}
-  <div class="back"><a href="{{ site.baseurl }}/">← 首页</a></div>
+  <footer>© 2026 uu · <a href="{{ site.baseurl }}/">home</a></footer>
 </body>
 </html>
