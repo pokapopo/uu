@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} · uu</title>
+  <style>
+    body { max-width: 680px; margin: 80px auto; padding: 0 20px; font-family: Georgia, "STKaiti", "Noto Serif SC", serif; background: #faf6ee; color: #3a3a3a; line-height: 1.85; }
+    h1 { color: #8b4a3a; font-size: 1.6em; }
+    a { color: #8b4a3a; }
+    .back { margin-top: 3em; padding-top: 1em; border-top: 1px solid #e0d5c5; font-size: 0.9em; }
+    @media (max-width: 600px) { body { margin: 40px auto; } h1 { font-size: 1.3em; } }
+  </style>
+</head>
+<body>
+  <h1>{{ page.title }}</h1>
+  {{ content }}
+  <div class="back"><a href="{{ site.baseurl }}/">← 首页</a></div>
+</body>
+</html>

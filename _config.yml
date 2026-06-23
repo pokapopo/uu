@@ -1,0 +1,6 @@
+title: uu
+description: 一个还在学习的人。在这里整理思路、记录成长、留下痕迹。
+baseurl: "/uu"
+url: "https://pokapopo.github.io"
+markdown: kramdown
+plugins: []
